@@ -16,4 +16,4 @@ classification challenge (DFC 3D) than the baseline (i.e. PointSIFT), which veri
 ability of our model.
 In this repository, we release code and data for training and inferencing our geometry-attentional network.
 ## Installation
-A docker container implementation has been provided for easy setup. The container is based on a tensorflow-gpu image; therefore, nvidia-docker (version 2) must be installed on the host machine. See (https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)) for installation instructions.
+A docker container implementation has been provided for easy setup. The container is based on a tensorflow-gpu image; therefore, nvidia-docker (version 2) must be installed on the host machine. See https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0) for installation instructions.
