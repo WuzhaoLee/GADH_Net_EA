@@ -23,3 +23,6 @@ The docker container image can be bulit by running:
 cd /path/to/GADH_Net_EA
 docker build . -t ga_net
 ```
+The following steps assume the container name is ```ga_net```
+
+
