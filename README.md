@@ -1,5 +1,6 @@
 # GADH_Net_EA
  A Geometry-Attentional Network for ALS Point Cloud Classification
+![GA-Conv](https://github.com/WuzhaoLee/GADH_Net_EA/blob/master/doc/GA-Conv.png)
 ## Introduction
 Airborne Laser Scanning (ALS) point cloud classification is a critical task in remote sensing and
 photogrammetry communities. In particular, the characteristics of ALS point clouds are distinctive
