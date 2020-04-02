@@ -27,9 +27,11 @@ The following steps assume the container name is ```ga_net```
 
 ## Create ISPRS dataset~
 You can download our processed data：block.pickle, or run the following to generate these data.
+```
 docker run  -it --rm \
-    -v /path/to/GANH_Net_EA/data: /pointnet2/data \
-    -v /path/to/GANH_Net_EA/sem_seg: /pointnet2/sem_seg \
+    -v /path/to/GANH_Net_EA/data:/pointnet2/data \
+    -v /path/to/GANH_Net_EA/sem_seg:/pointnet2/sem_seg \
     ga_net python /pointnet2/sem_seg/create_ISPRS_mydata.py \
     -i /pointnet2/data/ISPRSdata  -o /pointnet2/data/ISPRSdata/block_pickle
+```
 
