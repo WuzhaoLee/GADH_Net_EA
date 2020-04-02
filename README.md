@@ -17,3 +17,9 @@ ability of our model.
 In this repository, we release code and data for training and inferencing our geometry-attentional network.
 ## Installation
 A docker container implementation has been provided for easy setup. The container is based on a tensorflow-gpu image; therefore, nvidia-docker (version 2) must be installed on the host machine. See https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0) for installation instructions.
+
+The docker container image can be bulit by running:
+```
+cd /path/to/GADH_Net_EA
+docker build . -t ga_net
+```
