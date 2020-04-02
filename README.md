@@ -25,13 +25,48 @@ docker build . -t ga_net
 ```
 The following steps assume the container name is ```ga_net```
 
-## Create ISPRS dataset~
+## Create ISPRS dataset
 You can download our processed data：block.pickle, or run the following to generate these data.
 ```
 docker run  -it --rm \
-    -v /path/to/GANH_Net_EA/data:/pointnet2/data \
-    -v /path/to/GANH_Net_EA/sem_seg:/pointnet2/sem_seg \
+    -v /path/to/GADH_Net_EA/data:/pointnet2/data \
+    -v /path/to/GADH_Net_EA/sem_seg:/pointnet2/sem_seg \
     ga_net python /pointnet2/sem_seg/create_ISPRS_mydata.py \
     -i /pointnet2/data/ISPRSdata  -o /pointnet2/data/ISPRSdata/block_pickle
 ```
-
+## Training the model
+To train our geometry-attentional network with deep supervision, run:
+```
+docker run --runtime=nvidia -it --rm \
+    -v /path/to/GADH_Net_EA/data:/pointnet2/data \
+    -v /path/to/GADH_Net_EA/sem_seg:/pointnet2/sem_seg \
+    -v /path/to/GADH_Net_EA/models:/pointnet2/models \
+    -v /path/to/GADH_Net_EA/utils:/pointnet2/utils \
+    ga_net python /pointnet2/sem_seg/train_multi_gpu_deep.py \
+    --data_dir=data/block_pickle \
+    --log_dir=data/model1 \
+    --model=GADH_Net_EA --extra-dims 3 4 --gpu_num=2
+```
+## Running Inference
+To classify point clouds, first run the following to generate intermediate classification results ```Eval_can_out/Eval_can.txt```, and then use knnVote.m to perform Knn voting to get point-wise semantic labels of the original point cloud ```myout1/EVAL_CLS.txt```:
+```
+docker run --runtime=nvidia -it --rm \
+    -v /path/to/GADH_Net_EA/data:/pointnet2/data \
+    -v /path/to/GADH_Net_EA/sem_seg:/pointnet2/sem_seg \
+    -v /path/to/GADH_Net_EA/models:/pointnet2/models \
+    -v /path/to/GADH_Net_EA/utils:/pointnet2/utils \
+    ga_net python /pointnet2/sem_seg/inference_deep.py \
+    --model=GANH_Net_EA --extra-dims 3 4 \
+    --model_path=data/model1/mode.ckpt-####.ckpt \
+    --input_path=data/Inference \
+    --output_path=data/Inference/Eval_can_out
+```
+## evaluate and generate the confusion matrix
+run the following:
+```
+docker run -it --rm \
+    -v /home/lwz/Projects/GANH_Net_EA/data/Inference:/data \
+    -v /home/lwz/Projects/GANH_Net_EA/sem_seg:/metrics \
+    lwz_dfc_pointcloud bash -c \
+   "python /metrics/evaluate.py -g /data/gt_test -d /data/myout1 | tee /data/myout1/metrics_myout1.txt"
+```
