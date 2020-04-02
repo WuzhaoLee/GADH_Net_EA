@@ -65,8 +65,8 @@ docker run --runtime=nvidia -it --rm \
 run the following:
 ```
 docker run -it --rm \
-    -v /home/lwz/Projects/GANH_Net_EA/data/Inference:/data \
-    -v /home/lwz/Projects/GANH_Net_EA/sem_seg:/metrics \
-    lwz_dfc_pointcloud bash -c \
+    -v /path/to/GADH_Net_EA/data/Inference:/data \
+    -v /path/to/GADH_Net_EA/sem_seg:/metrics \
+    ga_net -c \
    "python /metrics/evaluate.py -g /data/gt_test -d /data/myout1 | tee /data/myout1/metrics_myout1.txt"
 ```
