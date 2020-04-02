@@ -61,7 +61,7 @@ docker run --runtime=nvidia -it --rm \
     --input_path=data/Inference \
     --output_path=data/Inference/Eval_can_out
 ```
-## evaluate and generate the confusion matrix
+## Evaluate and generate the confusion matrix
 run the following:
 ```
 docker run -it --rm \
