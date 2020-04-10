@@ -70,3 +70,17 @@ docker run -it --rm \
     ga_net -c \
    "python /metrics/evaluate.py -g /data/gt_test -d /data/myout1 | tee /data/myout1/metrics_myout1.txt"
 ```
+
+## Citation
+If you find our work useful in your research, please consider citing:
+```
+@article{LI202026,
+title = "A geometry-attentional network for ALS point cloud classification",
+journal = "ISPRS Journal of Photogrammetry and Remote Sensing",
+volume = "164",
+pages = "26 - 40",
+year = "2020",
+issn = "0924-2716",
+author = "Wuzhao Li and Fu-Dong Wang and Gui-Song Xia",
+}
+```
