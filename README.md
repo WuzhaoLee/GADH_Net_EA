@@ -74,13 +74,13 @@ docker run -it --rm \
 ## Citation
 If you find our work useful in your research, please consider citing:
 ```
-@article{LI202026,
-title = "A geometry-attentional network for ALS point cloud classification",
-journal = "ISPRS Journal of Photogrammetry and Remote Sensing",
-volume = "164",
-pages = "26 - 40",
-year = "2020",
-issn = "0924-2716",
-author = "Wuzhao Li and Fu-Dong Wang and Gui-Song Xia",
+@article{li2020geometry,
+  title={A geometry-attentional network for ALS point cloud classification},
+  author={Li, Wuzhao and Wang, Fu-Dong and Xia, Gui-Song},
+  journal={ISPRS Journal of Photogrammetry and Remote Sensing},
+  volume={164},
+  pages={26--40},
+  year={2020},
+  publisher={Elsevier}
 }
 ```
